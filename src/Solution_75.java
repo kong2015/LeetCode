@@ -1,5 +1,3 @@
-import com.sun.jdi.InvalidTypeException;
-
 import java.util.Random;
 /**
  * 颜色排序

@@ -67,34 +67,34 @@ public class Test {
         }
         return max;
     }
-    public static boolean isNumber(String s) {
-        //数值字符串中可能包含的十个字符，map下标为0-9. 每一个下标表示当前字符可能对应的下一个字符是哪几种
-        HashMap [] states = {new HashMap<>(){{put(' ', 0); put('s', 1); put('d', 2); put('.', 3);}},//0代表空格
-                new HashMap<>(){{put('d', 2); put('.', 4);}},//1代表正负号
-                new HashMap<>(){{put('d', 2); put('.', 4); put('e', 6); put(' ', 9);}},//2代表小数点前的数字
-                new HashMap<>() {{put('d', 5);}},//3表示左边没有整数的小数点（.9）
-                new HashMap<>() {{put('d', 5); put('e', 6); put(' ', 9);}},//4表示左边有整数的小数点（3.）
-                new HashMap<>(){{put('d', 5); put('e', 6);}},//5代表小数点后的数字
-                new HashMap<>(){{put('s', 7); put('d', 8);}},//6代表e
-                new HashMap<>(){{put('d', 8);}},//7代表e后的正负号
-                new HashMap<>(){{put('d', 8); put(' ', 9);}},//8代表e后的整数
-                new HashMap<>(){{put(' ', 9);}}//9代表最后的空格
-        };
-        char temp;
-        int p = 0;
-        for (char c : s.toCharArray()){
-            if (c == ' ') temp = ' ';
-            else if (c == '+' || c == '-') temp = 's';
-            else if (c == '.') temp = '.';
-            else if (c <= '9' && c >= '0') temp = 'd';
-            else if (c == 'e' || c == 'E') temp = 'e';
-            else temp = '?';
-
-            if (!states[p].containsKey(temp)) return false;
-            p = (int) states[p].get(temp);
-        }
-        return p == 2 || p == 4 || p == 5 || p == 8 || p == 9;
-    }
+//    public static boolean isNumber(String s) {
+//        //数值字符串中可能包含的十个字符，map下标为0-9. 每一个下标表示当前字符可能对应的下一个字符是哪几种
+//        HashMap [] states = {new HashMap<>(){{put(' ', 0); put('s', 1); put('d', 2); put('.', 3);}},//0代表空格
+//                new HashMap<>(){{put('d', 2); put('.', 4);}},//1代表正负号
+//                new HashMap<>(){{put('d', 2); put('.', 4); put('e', 6); put(' ', 9);}},//2代表小数点前的数字
+//                new HashMap<>() {{put('d', 5);}},//3表示左边没有整数的小数点（.9）
+//                new HashMap<>() {{put('d', 5); put('e', 6); put(' ', 9);}},//4表示左边有整数的小数点（3.）
+//                new HashMap<>(){{put('d', 5); put('e', 6);}},//5代表小数点后的数字
+//                new HashMap<>(){{put('s', 7); put('d', 8);}},//6代表e
+//                new HashMap<>(){{put('d', 8);}},//7代表e后的正负号
+//                new HashMap<>(){{put('d', 8); put(' ', 9);}},//8代表e后的整数
+//                new HashMap<>(){{put(' ', 9);}}//9代表最后的空格
+//        };
+//        char temp;
+//        int p = 0;
+//        for (char c : s.toCharArray()){
+//            if (c == ' ') temp = ' ';
+//            else if (c == '+' || c == '-') temp = 's';
+//            else if (c == '.') temp = '.';
+//            else if (c <= '9' && c >= '0') temp = 'd';
+//            else if (c == 'e' || c == 'E') temp = 'e';
+//            else temp = '?';
+//
+//            if (!states[p].containsKey(temp)) return false;
+//            p = (int) states[p].get(temp);
+//        }
+//        return p == 2 || p == 4 || p == 5 || p == 8 || p == 9;
+//    }
     public static int maxSubArray(int[] nums) {
         int res = nums[0];
         for(int i = 1; i < nums.length; i++) {
